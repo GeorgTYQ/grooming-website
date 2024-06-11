@@ -24,13 +24,18 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
     return (
         <section className={className}>
             <header>
+                
+            <div className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
+                    <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
+                </svg>
                 <h2 className="text-lg font-medium text-gray-900">Profile Information</h2>
-
+            </div>
                 <p className="mt-1 text-sm text-gray-600">
-                    Update your account's profile information and email address.
+                    Update your account's information.
                 </p>
             </header>
-
+            {/* m className="max-w-xl"  */}
             <form onSubmit={submit} className="mt-6 space-y-6">
                 <div>
                     <InputLabel htmlFor="name" value="Name" />
@@ -40,8 +45,6 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                         className="mt-1 block w-full"
                         value={data.name}
                         onChange={(e) => setData('name', e.target.value)}
-                        required
-                        isFocused
                         autoComplete="name"
                     />
 
@@ -57,7 +60,6 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                         className="mt-1 block w-full"
                         value={data.email}
                         onChange={(e) => setData('email', e.target.value)}
-                        required
                         autoComplete="username"
                     />
 
@@ -86,7 +88,7 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                     </div>
                 )}
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 justify-end">
                     <PrimaryButton disabled={processing}>Save</PrimaryButton>
 
                     <Transition

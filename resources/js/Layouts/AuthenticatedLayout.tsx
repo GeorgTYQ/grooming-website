@@ -8,6 +8,8 @@ import { User } from '@/types';
 
 export default function Authenticated({ user, header, children }: PropsWithChildren<{ user: User, header?: ReactNode }>) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+    const username = user.name.charAt(0).toUpperCase() + user.name.slice(1).toLowerCase();
+
 
     return (
         <div className="min-h-screen bg-gray-100">
@@ -16,14 +18,15 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                     <div className="flex justify-between h-16">
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
-                                <Link href="/">
+                                <Link href="./" className="flex items-center">
                                     <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
+                                    <span className="ml-2 text-xl font-semibold text-gray-800">Pet Studio</span>
                                 </Link>
                             </div>
 
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
-                                    Dashboard
+                                    Home Page
                                 </NavLink>
                             </div>
                         </div>
@@ -37,7 +40,7 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                                                 type="button"
                                                 className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
-                                                {user.name}
+                                                {username}
 
                                                 <svg
                                                     className="ms-2 -me-0.5 h-4 w-4"
